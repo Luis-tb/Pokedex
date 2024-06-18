@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/pokedex"
+    android:gravity="center"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    tools:context=".MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_margin="50dp"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:layout_margin="50dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,36 +25,39 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/poke" />
 
             <EditText
+                android:id="@+id/txtemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:hint="Usuario"
                 android:background="@drawable/redondear"
-
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:textSize="24sp" />
 
             <EditText
+                android:id="@+id/txtpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:hint="Password"
                 android:background="@drawable/redondear"
+                android:hint="Password"
                 android:inputType="textPassword"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <Button
+                android:id="@+id/btningresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
                 android:background="#31319E"
-                android:text="Ingresar"
+                android:text="Iniciar Sesión"
                 android:textColor="#FFCE31"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -60,10 +65,33 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:background="@color/white"
+                android:drawableStart="@drawable/img"
+                android:text="Google"
+                android:textColor="#FFCE31"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:background="@color/white"
+                android:drawableStart="@drawable/facebook"
+                android:text="Facebook"
+                android:textColor="#FFCE31"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnregistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:background="#31319E"
-                android:text="Nueva Cuenta"
+                android:text="Registrarse"
                 android:textColor="#FFCE31"
                 android:textStyle="bold" />
         </LinearLayout>
