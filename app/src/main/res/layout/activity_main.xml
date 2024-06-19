@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="835dp"
             android:orientation="vertical">
 
             <ImageView
@@ -94,6 +94,20 @@
                 android:text="Registrarse"
                 android:textColor="#FFCE31"
                 android:textStyle="bold" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnSalir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:background="#31319E"
+                android:onClick="onClickSalir"
+                android:text="Salir" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

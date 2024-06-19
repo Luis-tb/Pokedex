@@ -50,6 +50,8 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.measurement.api)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
