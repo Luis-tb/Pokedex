@@ -28,8 +28,8 @@ class PokemonAdapter(private val context: Context, private val pokemonList: List
     override fun getItemCount() = pokemonList.size
 
     class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pokemonImagen: ImageView = itemView.findViewById(R.id.pokemon_image)
-        val pokemonNumero: TextView = itemView.findViewById(R.id.pokemon_number)
-        val pokemonNombre: TextView = itemView.findViewById(R.id.pokemon_name)
+        val pokemonImagen: ImageView = itemView.findViewById(R.id.pokemon_imagen)
+        val pokemonNumero: TextView = itemView.findViewById(R.id.pokemon_numero)
+        val pokemonNombre: TextView = itemView.findViewById(R.id.pokemon_nombre)
     }
 }
