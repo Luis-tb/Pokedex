@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 class PokemonAdapter(private val context: Context, private val pokemonList: List<Pokemon>) :
@@ -19,16 +20,16 @@ class PokemonAdapter(private val context: Context, private val pokemonList: List
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemonList[position]
-        holder.pokemonNumber.text = String.format("#%03d", pokemon.number)
-        holder.pokemonName.text = pokemon.name
-        Picasso.get().load(pokemon.imageUrl).into(holder.pokemonImage)
+        holder.pokemonNumero.text = String.format("#%03d", pokemon.numero)
+        holder.pokemonNombre.text = pokemon.nombre
+        Picasso.get().load(pokemon.imagen).into(holder.pokemonImagen)
     }
 
     override fun getItemCount() = pokemonList.size
 
     class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pokemonImage: ImageView = itemView.findViewById(R.id.pokemon_image)
-        val pokemonNumber: TextView = itemView.findViewById(R.id.pokemon_number)
-        val pokemonName: TextView = itemView.findViewById(R.id.pokemon_name)
+        val pokemonImagen: ImageView = itemView.findViewById(R.id.pokemon_image)
+        val pokemonNumero: TextView = itemView.findViewById(R.id.pokemon_number)
+        val pokemonNombre: TextView = itemView.findViewById(R.id.pokemon_name)
     }
 }

@@ -1,3 +1,7 @@
 package com.torres.pokdex
 
-data class Pokemon(val number: Int, val name: String, val imageUrl: String)
+data class Pokemon(
+    val numero: Int = 0,
+    val nombre: String = "",
+    val imagen: String = ""
+)
