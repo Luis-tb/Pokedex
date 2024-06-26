@@ -4,38 +4,35 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="@drawable/pokedex"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_margin="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="835dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
-                android:background="@drawable/poke" />
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/poke" />
 
             <EditText
                 android:id="@+id/txtemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/redondear"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -45,7 +42,7 @@
                 android:id="@+id/txtpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/redondear"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -55,7 +52,7 @@
                 android:id="@+id/btningresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="20dp"
                 android:background="#31319E"
                 android:text="Iniciar Sesión"
                 android:textColor="#FFCE31"
@@ -63,51 +60,29 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/btngoogle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:drawableStart="@drawable/img"
-                android:text="Google"
-                android:textColor="#FFCE31"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:background="@color/white"
-                android:drawableStart="@drawable/facebook"
-                android:text="Facebook"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="GOOGLE"
                 android:textColor="#FFCE31"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnregistrar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
                 android:background="#31319E"
                 android:text="Registrarse"
                 android:textColor="#FFCE31"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnSalir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="100dp"
-                android:background="#31319E"
-                android:onClick="onClickSalir"
-                android:text="Salir" />
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

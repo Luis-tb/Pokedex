@@ -20,10 +20,8 @@ class listapokemons : AppCompatActivity() {
         setContentView(R.layout.activity_listapokemons)
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         adapter = PokemonAdapter(this, pokemonList)
         recyclerView.adapter = adapter
-
         fetchPokemons()
     }
     private fun fetchPokemons() {

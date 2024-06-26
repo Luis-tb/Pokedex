@@ -1,13 +1,13 @@
 package com.torres.pokdex
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 class PokemonAdapter(private val context: Context, private val pokemonList: List<Pokemon>) :
@@ -21,8 +21,14 @@ class PokemonAdapter(private val context: Context, private val pokemonList: List
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemonList[position]
         holder.pokemonNumero.text = String.format("#%03d", pokemon.numero)
-        holder.pokemonNombre.text = pokemon.nombre
+        holder.pokemonNombre.text = pokemon.nombre.capitalizeEachWord()
         Picasso.get().load(pokemon.imagen).into(holder.pokemonImagen)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, PokemonDetalles::class.java).apply {
+                putExtra("pokemon", pokemon)
+            }
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = pokemonList.size
@@ -31,5 +37,9 @@ class PokemonAdapter(private val context: Context, private val pokemonList: List
         val pokemonImagen: ImageView = itemView.findViewById(R.id.pokemon_imagen)
         val pokemonNumero: TextView = itemView.findViewById(R.id.pokemon_numero)
         val pokemonNombre: TextView = itemView.findViewById(R.id.pokemon_nombre)
+    }
+
+    fun String.capitalizeEachWord(): String {
+        return this.split(" ").joinToString(" ") { it.capitalize() }
     }
 }
