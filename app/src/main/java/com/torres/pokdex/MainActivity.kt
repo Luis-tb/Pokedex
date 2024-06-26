@@ -21,14 +21,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var signInLauncher: ActivityResultLauncher<Intent>
     private lateinit var firebaseAuth: FirebaseAuth
-
+    private lateinit var analytics: FirebaseAnalytics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle().apply {
             putString("mensaje", "Integración completa")
         }
@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
                                     Alerta()
                                 }
                             } else {
-                                Log.e("TAG", "Firebase signInWithCredential failed", authTask.exception)
                                 Alerta()
                             }
                         }
@@ -61,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 } catch (e: ApiException) {
-                    Log.e("MainActivity", "Google sign-in failed", e)
                     Alerta()
                 }
             }
@@ -128,5 +126,9 @@ class MainActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(listaIntent)
+        val bundle = Bundle().apply {
+            putString("status", "Cargado")
+        }
+        analytics.logEvent("Cargar_lista", bundle)
     }
 }
