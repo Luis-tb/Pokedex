@@ -18,7 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
             <EditText
                 android:id="@+id/buscarPokemon"
                 android:layout_width="wrap_content"
@@ -34,14 +36,14 @@
                 android:orientation="vertical">
                 <Spinner
                     android:id="@+id/tipoSpinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:background="@color/white" />
                 <Spinner
                     android:id="@+id/tipoSpinner2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:background="@color/white" />
             </LinearLayout>
