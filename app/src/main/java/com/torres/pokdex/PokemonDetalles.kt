@@ -2,6 +2,8 @@ package com.torres.pokdex
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,24 +18,71 @@ class PokemonDetalles : AppCompatActivity() {
         val pokemonNumero = findViewById<TextView>(R.id.Numero)
         val pokemonNombre = findViewById<TextView>(R.id.Nombre)
         val pokemonDescripcion = findViewById<TextView>(R.id.Descripcion)
-        val pokemonTipos = findViewById<TextView>(R.id.Tipos)
-        val pokemonMovimientos = findViewById<TextView>(R.id.Movimientos)
+        val movimientosTable = findViewById<TableLayout>(R.id.movimientos_table)
         val pokemonImagen = findViewById<ImageView>(R.id.pokemon_imagen)
         val pokemon = intent.getParcelableExtra<Pokemon>("pokemon")
         pokemon?.let {
             pokemonNumero.text = String.format("#%03d", it.numero)
             pokemonNombre.text = it.nombre.capitalizeEachWord()
-            val descripcionSinSaltos = it.descripcion.replace("\n", " ")
-            pokemonDescripcion.text = descripcionSinSaltos
-            pokemonTipos.text = it.tipos.joinToString(", ")
-            pokemonMovimientos.text = it.movimientos.joinToString("\n") { move ->
-                "${move.nombre.capitalizeEachWord()} - ${move.nivel_aprendizaje} ${move.metodo}"
+            pokemonDescripcion.text = it.descripcion.replace("\n", " ")
+            val tipo1Imagen = findViewById<ImageView>(R.id.tipo1_imagen)
+            val tipo2Imagen = findViewById<ImageView>(R.id.tipo2_imagen)
+            if (it.tipos.size >= 1) {
+                val tipo1 = it.tipos[0].toLowerCase()
+                val tipo1ResourceId = resources.getIdentifier("${tipo1}", "drawable", packageName)
+                tipo1Imagen.setImageResource(tipo1ResourceId)
+            }
+            if (it.tipos.size >= 2) {
+                val tipo2 = it.tipos[1].toLowerCase()
+                val tipo2ResourceId = resources.getIdentifier("${tipo2}", "drawable", packageName)
+                tipo2Imagen.setImageResource(tipo2ResourceId)
             }
             Picasso.get().load(it.imagen).into(pokemonImagen)
+            it.movimientos.sortedWith(compareBy({ it.metodo.toLowerCase() != "nivel" }, { it.nivel_aprendizaje }))
+                .forEach { move ->
+                    val row = TableRow(this)
+                    val nombreView = TextView(this)
+                    nombreView.text = move.nombre.capitalizeEachWord()
+                    nombreView.setPadding(8, 8, 8, 8)
+                    val nivelView = TextView(this)
+                    nivelView.text = if (move.metodo.toLowerCase() == "nivel") {
+                        move.nivel_aprendizaje.toString()
+                    } else {
+                        ""
+                    }
+                    nivelView.setPadding(8, 8, 8, 8)
+                    val tipoImagenView = if (move.metodo.toLowerCase() == "nivel") {
+                        TextView(this).apply {
+                            text = "Nivel"
+                            setPadding(8, 8, 8, 8)
+                        }
+                    } else {
+                        ImageView(this).apply {
+                            val tipoImagenResource = obtenerImagenMovimiento(move.metodo)
+                            setImageResource(tipoImagenResource)
+                            adjustViewBounds = true
+                            layoutParams = TableRow.LayoutParams(
+                                resources.getDimensionPixelSize(R.dimen.image_width),
+                                resources.getDimensionPixelSize(R.dimen.image_height)
+                            )
+                        }
+                    }
+                    row.addView(nombreView)
+                    row.addView(nivelView)
+                    row.addView(tipoImagenView)
+                    movimientosTable.addView(row)
+                }
         }
     }
 
     fun String.capitalizeEachWord(): String {
         return this.split(" ").joinToString(" ") { it.capitalize() }
+    }
+
+    private fun obtenerImagenMovimiento(tipoMovimiento: String): Int {
+        return when (tipoMovimiento.toLowerCase()) {
+            "maquina" -> R.drawable.maquina
+            else -> R.drawable.pokeball
+        }
     }
 }

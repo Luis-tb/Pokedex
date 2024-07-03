@@ -3,4 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
+    <color name="colorPrimary">#FF5733</color>
+    <color name="colorPrimaryDark">#C70039</color>
+    <color name="dark_gray">#333333</color>
+    <color name="medium_gray">#CCCCCC</color>
+    <color name="light_gray">#ECEFF1</color> <!-- Color de fondo claro para la interfaz -->
+    <color name="grass_green">#4CAF50</color> <!-- Verde hierba -->
+    <color name="fire_red">#D32F2F</color> <!-- Rojo fuego -->
+    <color name="water_blue">#2196F3</color> <!-- Azul agua -->
+    <color name="electric_yellow">#FFEB3B</color> <!-- Amarillo eléctrico -->
+    <color name="normal_brown">#8D6E63</color>
 </resources>

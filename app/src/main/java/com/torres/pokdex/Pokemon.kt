@@ -76,3 +76,8 @@ data class Movimiento(
         }
     }
 }
+data class Move(
+    val nombre: String,
+    val nivelAprendizaje: Int,
+    val metodo: String // Puede ser "nivel" o "maquina", u otros tipos de métodos
+)

@@ -25,8 +25,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginBottom="20dp"
+                android:layout_weight="1"
                 android:src="@drawable/poke" />
 
             <EditText
@@ -49,16 +49,35 @@
                 android:inputType="textPassword"
                 android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/btningresar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="#31319E"
-                android:text="Iniciar Sesión"
-                android:textColor="#FFCE31"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/btningresar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="#31319E"
+                    android:text="Acceder"
+                    android:textColor="#FFCE31"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnregistrar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#31319E"
+                    android:text="Registrarse"
+                    android:textColor="#FFCE31"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btngoogle"
@@ -74,21 +93,11 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnregistrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="#31319E"
-                android:text="Registrarse"
-                android:textColor="#FFCE31"
-                android:textStyle="bold" />
-
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/picachu" />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:src="@drawable/pikachu" />
 
         </LinearLayout>
     </ScrollView>
