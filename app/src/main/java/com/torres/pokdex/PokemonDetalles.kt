@@ -5,11 +5,9 @@ import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.squareup.picasso.Picasso
+import java.text.Normalizer
 
 class PokemonDetalles : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +26,13 @@ class PokemonDetalles : AppCompatActivity() {
             val tipo1Imagen = findViewById<ImageView>(R.id.tipo1_imagen)
             val tipo2Imagen = findViewById<ImageView>(R.id.tipo2_imagen)
             if (it.tipos.size >= 1) {
-                val tipo1 = it.tipos[0].toLowerCase()
-                val tipo1ResourceId = resources.getIdentifier("${tipo1}", "drawable", packageName)
+                val tipo1 = it.tipos[0].normalizeString()
+                val tipo1ResourceId = resources.getIdentifier(tipo1, "drawable", packageName)
                 tipo1Imagen.setImageResource(tipo1ResourceId)
             }
             if (it.tipos.size >= 2) {
-                val tipo2 = it.tipos[1].toLowerCase()
-                val tipo2ResourceId = resources.getIdentifier("${tipo2}", "drawable", packageName)
+                val tipo2 = it.tipos[1].normalizeString()
+                val tipo2ResourceId = resources.getIdentifier(tipo2, "drawable", packageName)
                 tipo2Imagen.setImageResource(tipo2ResourceId)
             }
             Picasso.get().load(it.imagen).into(pokemonImagen)
@@ -77,6 +75,12 @@ class PokemonDetalles : AppCompatActivity() {
 
     fun String.capitalizeEachWord(): String {
         return this.split(" ").joinToString(" ") { it.capitalize() }
+    }
+
+    fun String.normalizeString(): String {
+        return Normalizer.normalize(this, Normalizer.Form.NFD)
+            .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
+            .toLowerCase()
     }
 
     private fun obtenerImagenMovimiento(tipoMovimiento: String): Int {
